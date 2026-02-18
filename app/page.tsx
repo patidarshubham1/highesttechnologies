@@ -16,41 +16,62 @@ const initialFormData: ContactFormData = {
 
 const services = [
   {
-    title: "Search Intelligence",
+    title: "Custom Website Development",
     description:
-      "Advanced technical SEO, schema architecture, and search visibility strategies built for long-term compounding growth.",
+      "Responsive business websites built for speed, trust, and lead generation across desktop and mobile devices.",
   },
   {
-    title: "Growth Marketing Systems",
+    title: "E-Commerce Store Solutions",
     description:
-      "Data-led paid media, social narratives, and funnel engineering that move users from awareness to revenue.",
+      "Scalable online stores with secure checkout, product workflows, and conversion-focused user journeys.",
   },
   {
-    title: "Digital Experience Design",
+    title: "SEO & Performance Marketing",
     description:
-      "Conversion-first landing pages, performance optimization, and lifecycle flows shaped around user intent.",
+      "Search optimization, local visibility campaigns, and paid growth systems designed to increase qualified enquiries.",
+  },
+  {
+    title: "Branding & Creative Design",
+    description:
+      "Identity design, visual systems, and campaign assets that keep your brand consistent across every channel.",
   },
 ];
 
 const portfolioItems = [
   {
-    client: "Commerce Platform",
-    outcome: "210% organic growth with a 4.8x ROI pipeline",
+    client: "Healthcare Provider Group",
+    outcome: "58% increase in appointment requests within 4 months",
   },
   {
-    client: "B2B SaaS Venture",
-    outcome: "3x MQL velocity after full-funnel optimization",
+    client: "Education Startup",
+    outcome: "2.7x growth in qualified leads from organic search",
   },
   {
-    client: "Regional Service Network",
-    outcome: "Top-tier keyword coverage across 14 priority cities",
+    client: "Manufacturing Exporter",
+    outcome: "New multilingual website generating global B2B enquiries",
   },
 ];
 
 const differentiators = [
-  "AI-assisted market intelligence",
-  "Realtime campaign observability",
-  "Cross-channel attribution clarity",
+  "Strategy-first discovery before any build work",
+  "Transparent milestone delivery with weekly updates",
+  "Dedicated team for design, development, and marketing",
+  "Long-term maintenance and optimization support",
+];
+
+const deliverySteps = [
+  {
+    title: "1. Discovery & Planning",
+    detail: "We understand your market, goals, and competitors to build a practical roadmap.",
+  },
+  {
+    title: "2. Design & Build",
+    detail: "Our team creates UI concepts and develops your website or campaign system with clear feedback loops.",
+  },
+  {
+    title: "3. Launch & Growth",
+    detail: "After launch, we track performance, improve conversion points, and scale what works.",
+  },
 ];
 
 export default function HomePage() {
@@ -93,23 +114,23 @@ export default function HomePage() {
           <div className="grid-overlay" />
           <div className="container hero-grid">
             <div>
-              <p className="tag">Next-Gen IT & Software Growth Studio</p>
-              <h1>Futuristic digital systems engineered for visibility, velocity, and scale.</h1>
+              <p className="tag">Website, E-Commerce & Digital Growth Partner</p>
+              <h1>Build your digital presence with a team focused on business outcomes.</h1>
               <p>
-                Inspired by modern enterprise experiences, we blend strategy, software, and marketing intelligence to
-                build brands that lead in tomorrow&apos;s digital economy.
+                We create high-performing websites and marketing systems for companies that want more visibility, better
+                conversions, and measurable growth.
               </p>
               <div className="hero-cta-group">
                 <a className="cta" href="#contact">
-                  Start Your Transformation
+                  Request a Free Consultation
                 </a>
                 <a className="ghost-cta" href="#services">
-                  Explore Capabilities
+                  View Our Services
                 </a>
               </div>
             </div>
             <div className="hero-card">
-              <h3>Performance Snapshot</h3>
+              <h3>Recent Impact</h3>
               <ul>
                 {portfolioItems.map((item) => (
                   <li key={item.client}>
@@ -125,10 +146,10 @@ export default function HomePage() {
         <section id="about" className="section">
           <div className="container split-section">
             <div>
-              <h2>Designed for the digital future</h2>
+              <h2>Your long-term digital execution team</h2>
               <p>
-                Highest Technologies is a modern IT and growth partner helping organizations transform traditional
-                marketing into measurable digital momentum.
+                Highest Technologies helps startups, SMBs, and enterprise teams strengthen their online presence with
+                practical strategies and dependable implementation.
               </p>
             </div>
             <ul className="highlights">
@@ -141,7 +162,7 @@ export default function HomePage() {
 
         <section id="services" className="section section-alt">
           <div className="container">
-            <h2>Services</h2>
+            <h2>Our Core Services</h2>
             <div className="cards">
               {services.map((service) => (
                 <article key={service.title} className="card">
@@ -155,12 +176,12 @@ export default function HomePage() {
 
         <section id="portfolio" className="section">
           <div className="container">
-            <h2>Portfolio Signals</h2>
+            <h2>How We Deliver</h2>
             <div className="cards">
-              {portfolioItems.map((item) => (
-                <article key={item.client} className="card">
-                  <h3>{item.client}</h3>
-                  <p>{item.outcome}</p>
+              {deliverySteps.map((item) => (
+                <article key={item.title} className="card">
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
                 </article>
               ))}
             </div>
@@ -172,8 +193,8 @@ export default function HomePage() {
             <div>
               <h2>Contact Us</h2>
               <p>
-                Ready to upgrade your growth engine? Share your goals and we&apos;ll craft a future-ready roadmap for
-                your brand.
+                Tell us what you want to achieve online. We&apos;ll share a tailored action plan for your website,
+                marketing, or complete digital transformation project.
               </p>
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
@@ -204,7 +225,7 @@ export default function HomePage() {
               <button type="submit">Send Message</button>
               {submitted && (
                 <p className="form-success" role="status" aria-live="polite">
-                  Thank you for connecting with us. Our team will contact you soon.
+                  Thanks for reaching out. Our team will contact you shortly.
                 </p>
               )}
             </form>
