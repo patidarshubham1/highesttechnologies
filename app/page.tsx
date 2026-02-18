@@ -74,6 +74,24 @@ const deliverySteps = [
   },
 ];
 
+const futureVisuals = [
+  {
+    title: "AI Growth Command Center",
+    description: "Real-time dashboards, campaign intelligence, and conversion tracking in one futuristic interface.",
+    image: "/images/future-dashboard.svg",
+  },
+  {
+    title: "Immersive Product Experiences",
+    description: "3D-inspired sections and bold gradients that keep visitors engaged and improve brand recall.",
+    image: "/images/future-experience.svg",
+  },
+  {
+    title: "Trust-First Digital Journeys",
+    description: "Secure checkout flows and performance-led architecture for confident customer decisions.",
+    image: "/images/future-security.svg",
+  },
+];
+
 export default function HomePage() {
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [submitted, setSubmitted] = useState(false);
@@ -97,15 +115,22 @@ export default function HomePage() {
     <div>
       <header className="header">
         <div className="container nav">
-          <a href="#home" className="brand">
-            Highest Technologies
-          </a>
+          <div className="brand-wrap">
+            <a href="#home" className="brand">
+              Highest Technologies
+            </a>
+            <span className="brand-status">Future-Ready Digital Partner</span>
+          </div>
           <nav>
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#contact">Contact Us</a>
+            <a href="#showcase">Showcase</a>
+            <a href="#contact">Contact</a>
           </nav>
+          <a href="#contact" className="nav-cta">
+            Start a Project
+          </a>
         </div>
       </header>
 
@@ -130,6 +155,11 @@ export default function HomePage() {
               </div>
             </div>
             <div className="hero-card">
+              <img
+                src="/images/future-dashboard.svg"
+                alt="Futuristic analytics dashboard preview"
+                className="hero-card-image"
+              />
               <h3>Recent Impact</h3>
               <ul>
                 {portfolioItems.map((item) => (
@@ -182,6 +212,25 @@ export default function HomePage() {
                 <article key={item.title} className="card">
                   <h3>{item.title}</h3>
                   <p>{item.detail}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="showcase" className="section">
+          <div className="container">
+            <h2>Future-Focused Visual Experiences</h2>
+            <p>
+              We design attractive web experiences with high-tech visuals that build trust quickly and move customers
+              toward action.
+            </p>
+            <div className="visual-grid">
+              {futureVisuals.map((visual) => (
+                <article key={visual.title} className="visual-card">
+                  <img src={visual.image} alt={visual.title} className="visual-image" />
+                  <h3>{visual.title}</h3>
+                  <p>{visual.description}</p>
                 </article>
               ))}
             </div>
