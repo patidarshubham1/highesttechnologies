@@ -1,46 +1,75 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
+
+type ContactFormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+const initialFormData: ContactFormData = {
+  name: "",
+  email: "",
+  message: "",
+};
 
 const services = [
   {
-    title: "SEO Strategy & Execution",
+    title: "Search Intelligence",
     description:
-      "Technical SEO audits, keyword planning, on-page optimization, and ranking growth campaigns.",
+      "Advanced technical SEO, schema architecture, and search visibility strategies built for long-term compounding growth.",
   },
   {
-    title: "Digital Marketing Campaigns",
+    title: "Growth Marketing Systems",
     description:
-      "Performance-driven social media, PPC planning, and lead generation campaigns tailored to your business goals.",
+      "Data-led paid media, social narratives, and funnel engineering that move users from awareness to revenue.",
   },
   {
-    title: "Content & Conversion Optimization",
+    title: "Digital Experience Design",
     description:
-      "High-impact content creation and landing page optimization that turns traffic into qualified enquiries.",
+      "Conversion-first landing pages, performance optimization, and lifecycle flows shaped around user intent.",
   },
 ];
 
 const portfolioItems = [
   {
-    client: "E-commerce Brand",
-    outcome: "+210% organic traffic in 6 months",
+    client: "Commerce Platform",
+    outcome: "210% organic growth with a 4.8x ROI pipeline",
   },
   {
-    client: "B2B SaaS Startup",
-    outcome: "3x increase in marketing qualified leads",
+    client: "B2B SaaS Venture",
+    outcome: "3x MQL velocity after full-funnel optimization",
   },
   {
-    client: "Local Services Company",
-    outcome: "Top 3 Google rankings for core local keywords",
+    client: "Regional Service Network",
+    outcome: "Top-tier keyword coverage across 14 priority cities",
   },
 ];
 
+const differentiators = [
+  "AI-assisted market intelligence",
+  "Realtime campaign observability",
+  "Cross-channel attribution clarity",
+];
+
 export default function HomePage() {
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+
+    if (submitted) {
+      setSubmitted(false);
+    }
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitted(true);
+    setFormData(initialFormData);
   };
 
   return (
@@ -61,20 +90,26 @@ export default function HomePage() {
 
       <main>
         <section id="home" className="hero">
+          <div className="grid-overlay" />
           <div className="container hero-grid">
             <div>
-              <p className="tag">IT & Software Services</p>
-              <h1>Grow your brand with SEO and digital marketing that delivers results</h1>
+              <p className="tag">Next-Gen IT & Software Growth Studio</p>
+              <h1>Futuristic digital systems engineered for visibility, velocity, and scale.</h1>
               <p>
-                Highest Technologies helps businesses build a strong online presence with modern SEO and digital
-                marketing solutions.
+                Inspired by modern enterprise experiences, we blend strategy, software, and marketing intelligence to
+                build brands that lead in tomorrow&apos;s digital economy.
               </p>
-              <a className="cta" href="#contact">
-                Get a Free Consultation
-              </a>
+              <div className="hero-cta-group">
+                <a className="cta" href="#contact">
+                  Start Your Transformation
+                </a>
+                <a className="ghost-cta" href="#services">
+                  Explore Capabilities
+                </a>
+              </div>
             </div>
             <div className="hero-card">
-              <h3>Portfolio Snapshot</h3>
+              <h3>Performance Snapshot</h3>
               <ul>
                 {portfolioItems.map((item) => (
                   <li key={item.client}>
@@ -88,13 +123,19 @@ export default function HomePage() {
         </section>
 
         <section id="about" className="section">
-          <div className="container">
-            <h2>About Highest Technologies</h2>
-            <p>
-              We are a results-focused IT and software service company, starting with specialized SEO and digital
-              marketing services. Our mission is to help businesses improve visibility, attract the right audience, and
-              scale confidently.
-            </p>
+          <div className="container split-section">
+            <div>
+              <h2>Designed for the digital future</h2>
+              <p>
+                Highest Technologies is a modern IT and growth partner helping organizations transform traditional
+                marketing into measurable digital momentum.
+              </p>
+            </div>
+            <ul className="highlights">
+              {differentiators.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -114,7 +155,7 @@ export default function HomePage() {
 
         <section id="portfolio" className="section">
           <div className="container">
-            <h2>Portfolio</h2>
+            <h2>Portfolio Signals</h2>
             <div className="cards">
               {portfolioItems.map((item) => (
                 <article key={item.client} className="card">
@@ -131,26 +172,39 @@ export default function HomePage() {
             <div>
               <h2>Contact Us</h2>
               <p>
-                Ready to grow? Let&apos;s discuss your goals and create a strategy for SEO and digital marketing success.
+                Ready to upgrade your growth engine? Share your goals and we&apos;ll craft a future-ready roadmap for
+                your brand.
               </p>
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
               <label>
                 Name
-                <input type="text" name="name" placeholder="Your name" />
+                <input type="text" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} />
               </label>
               <label>
                 Email
-                <input type="email" name="email" placeholder="you@company.com" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="you@company.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
               </label>
               <label>
                 Message
-                <textarea name="message" rows={4} placeholder="Tell us about your project" />
+                <textarea
+                  name="message"
+                  rows={4}
+                  placeholder="Tell us about your project"
+                  value={formData.message}
+                  onChange={handleChange}
+                />
               </label>
               <button type="submit">Send Message</button>
               {submitted && (
                 <p className="form-success" role="status" aria-live="polite">
-                  Thank you for connecting us, we will get back to you.
+                  Thank you for connecting with us. Our team will contact you soon.
                 </p>
               )}
             </form>
