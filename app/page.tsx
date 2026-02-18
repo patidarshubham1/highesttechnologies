@@ -1,3 +1,7 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+
 const services = [
   {
     title: "SEO Strategy & Execution",
@@ -32,6 +36,13 @@ const portfolioItems = [
 ];
 
 export default function HomePage() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div>
       <header className="header">
@@ -123,7 +134,7 @@ export default function HomePage() {
                 Ready to grow? Let&apos;s discuss your goals and create a strategy for SEO and digital marketing success.
               </p>
             </div>
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit}>
               <label>
                 Name
                 <input type="text" name="name" placeholder="Your name" />
@@ -136,7 +147,12 @@ export default function HomePage() {
                 Message
                 <textarea name="message" rows={4} placeholder="Tell us about your project" />
               </label>
-              <button type="button">Send Message</button>
+              <button type="submit">Send Message</button>
+              {submitted && (
+                <p className="form-success" role="status" aria-live="polite">
+                  Thank you for connecting us, we will get back to you.
+                </p>
+              )}
             </form>
           </div>
         </section>

@@ -191,6 +191,12 @@ button {
   cursor: pointer;
 }
 
+.form-success {
+  margin: 0;
+  color: #10733f;
+  font-weight: 600;
+}
+
 @media (max-width: 900px) {
   .hero-grid,
   .cards,
