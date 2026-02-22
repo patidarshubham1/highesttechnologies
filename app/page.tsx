@@ -16,79 +16,52 @@ const initialFormData: ContactFormData = {
 
 const services = [
   {
-    title: "Custom Website Development",
+    title: "Corporate Website Revamps",
     description:
-      "Responsive business websites built for speed, trust, and lead generation across desktop and mobile devices.",
+      "Complete redesigns with modern UI systems, clear information hierarchy, and faster performance for better first impressions.",
   },
   {
-    title: "E-Commerce Store Solutions",
+    title: "B2B Lead Generation Funnels",
     description:
-      "Scalable online stores with secure checkout, product workflows, and conversion-focused user journeys.",
+      "Landing pages, conversion journeys, and CRM-ready forms crafted to turn website traffic into qualified business enquiries.",
   },
   {
-    title: "SEO & Performance Marketing",
+    title: "E-Commerce Engineering",
     description:
-      "Search optimization, local visibility campaigns, and paid growth systems designed to increase qualified enquiries.",
+      "Secure and scalable storefront builds with seamless checkout, product filters, and merchandising workflows.",
   },
   {
-    title: "Branding & Creative Design",
+    title: "SEO + Growth Optimization",
     description:
-      "Identity design, visual systems, and campaign assets that keep your brand consistent across every channel.",
+      "Technical SEO, content planning, and analytics-led experiments that grow visibility and conversion over time.",
   },
 ];
 
-const portfolioItems = [
-  {
-    client: "Healthcare Provider Group",
-    outcome: "58% increase in appointment requests within 4 months",
-  },
-  {
-    client: "Education Startup",
-    outcome: "2.7x growth in qualified leads from organic search",
-  },
-  {
-    client: "Manufacturing Exporter",
-    outcome: "New multilingual website generating global B2B enquiries",
-  },
+const metrics = [
+  { label: "Projects Delivered", value: "180+" },
+  { label: "Avg. Client Retention", value: "92%" },
+  { label: "Industries Served", value: "24" },
 ];
 
 const differentiators = [
-  "Strategy-first discovery before any build work",
-  "Transparent milestone delivery with weekly updates",
-  "Dedicated team for design, development, and marketing",
-  "Long-term maintenance and optimization support",
+  "Design language aligned to your brand and market segment",
+  "Conversion-focused content and section architecture",
+  "Fast page speed and mobile-first responsive structure",
+  "Ongoing support and optimization after launch",
 ];
 
 const deliverySteps = [
   {
-    title: "1. Discovery & Planning",
-    detail: "We understand your market, goals, and competitors to build a practical roadmap.",
+    title: "Audit & Strategy",
+    detail: "We map your current gaps, competitor benchmarks, and growth goals before touching design.",
   },
   {
-    title: "2. Design & Build",
-    detail: "Our team creates UI concepts and develops your website or campaign system with clear feedback loops.",
+    title: "UI/UX Redesign",
+    detail: "Your header, hero, inner pages, and calls-to-action are redesigned with modern enterprise visual standards.",
   },
   {
-    title: "3. Launch & Growth",
-    detail: "After launch, we track performance, improve conversion points, and scale what works.",
-  },
-];
-
-const futureVisuals = [
-  {
-    title: "AI Growth Command Center",
-    description: "Real-time dashboards, campaign intelligence, and conversion tracking in one futuristic interface.",
-    image: "/images/future-dashboard.svg",
-  },
-  {
-    title: "Immersive Product Experiences",
-    description: "3D-inspired sections and bold gradients that keep visitors engaged and improve brand recall.",
-    image: "/images/future-experience.svg",
-  },
-  {
-    title: "Trust-First Digital Journeys",
-    description: "Secure checkout flows and performance-led architecture for confident customer decisions.",
-    image: "/images/future-security.svg",
+    title: "Build & Launch",
+    detail: "Development, testing, speed checks, and go-live support with clean handover and improvement roadmap.",
   },
 ];
 
@@ -113,73 +86,77 @@ export default function HomePage() {
 
   return (
     <div>
+      <div className="top-strip">
+        <div className="container top-strip-content">
+          <span>Digital Transformation & Web Excellence Partner</span>
+          <span>Call: +91 98765 43210</span>
+        </div>
+      </div>
+
       <header className="header">
         <div className="container nav">
-          <div className="brand-wrap">
-            <a href="#home" className="brand">
-              Highest Technologies
-            </a>
-            <span className="brand-status">Future-Ready Digital Partner</span>
-          </div>
+          <a href="#home" className="brand">
+            <span>Highest</span>
+            <small>Technologies</small>
+          </a>
           <nav>
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#showcase">Showcase</a>
+            <a href="#process">Process</a>
             <a href="#contact">Contact</a>
           </nav>
           <a href="#contact" className="nav-cta">
-            Start a Project
+            Get Proposal
           </a>
         </div>
       </header>
 
       <main>
         <section id="home" className="hero">
-          <div className="grid-overlay" />
           <div className="container hero-grid">
             <div>
-              <p className="tag">Website, E-Commerce & Digital Growth Partner</p>
-              <h1>Build your digital presence with a team focused on business outcomes.</h1>
+              <p className="tag">Website Redesign & Digital Growth</p>
+              <h1>A premium corporate website experience that looks credible and converts better.</h1>
               <p>
-                We create high-performing websites and marketing systems for companies that want more visibility, better
-                conversions, and measurable growth.
+                We redesigned the structure to feel professional and modern—starting from the header and navigation to
+                every key section—so your brand presents stronger and performs better.
               </p>
               <div className="hero-cta-group">
                 <a className="cta" href="#contact">
-                  Request a Free Consultation
+                  Start Redesign Project
                 </a>
                 <a className="ghost-cta" href="#services">
-                  View Our Services
+                  Explore Services
                 </a>
               </div>
             </div>
-            <div className="hero-card">
-              <img
-                src="/images/future-dashboard.svg"
-                alt="Futuristic analytics dashboard preview"
-                className="hero-card-image"
-              />
-              <h3>Recent Impact</h3>
+            <aside className="hero-panel">
+              <h3>Business-First Outcomes</h3>
               <ul>
-                {portfolioItems.map((item) => (
-                  <li key={item.client}>
-                    <strong>{item.client}</strong>
-                    <span>{item.outcome}</span>
-                  </li>
-                ))}
+                <li>Sharper brand perception with cleaner visual hierarchy</li>
+                <li>Improved enquiry flow through CTA placement and section planning</li>
+                <li>Enterprise-grade look inspired by modern industrial websites</li>
               </ul>
-            </div>
+              <div className="metric-grid">
+                {metrics.map((metric) => (
+                  <div key={metric.label} className="metric-card">
+                    <strong>{metric.value}</strong>
+                    <span>{metric.label}</span>
+                  </div>
+                ))}
+              </div>
+            </aside>
           </div>
         </section>
 
         <section id="about" className="section">
           <div className="container split-section">
             <div>
-              <h2>Your long-term digital execution team</h2>
+              <h2>Redesigned for trust, clarity, and scale</h2>
               <p>
-                Highest Technologies helps startups, SMBs, and enterprise teams strengthen their online presence with
-                practical strategies and dependable implementation.
+                Your old interface felt visually weak. The new direction introduces a refined header, structured
+                typography, cleaner spacing, and confident calls-to-action aligned with high-performing B2B websites.
               </p>
             </div>
             <ul className="highlights">
@@ -192,7 +169,7 @@ export default function HomePage() {
 
         <section id="services" className="section section-alt">
           <div className="container">
-            <h2>Our Core Services</h2>
+            <h2>Core Services</h2>
             <div className="cards">
               {services.map((service) => (
                 <article key={service.title} className="card">
@@ -204,10 +181,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="portfolio" className="section">
+        <section id="process" className="section">
           <div className="container">
-            <h2>How We Deliver</h2>
-            <div className="cards">
+            <h2>How We Execute</h2>
+            <div className="cards process-cards">
               {deliverySteps.map((item) => (
                 <article key={item.title} className="card">
                   <h3>{item.title}</h3>
@@ -218,32 +195,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="showcase" className="section">
-          <div className="container">
-            <h2>Future-Focused Visual Experiences</h2>
-            <p>
-              We design attractive web experiences with high-tech visuals that build trust quickly and move customers
-              toward action.
-            </p>
-            <div className="visual-grid">
-              {futureVisuals.map((visual) => (
-                <article key={visual.title} className="visual-card">
-                  <img src={visual.image} alt={visual.title} className="visual-image" />
-                  <h3>{visual.title}</h3>
-                  <p>{visual.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="contact" className="section section-alt">
           <div className="container contact">
             <div>
-              <h2>Contact Us</h2>
+              <h2>Let&apos;s elevate your website</h2>
               <p>
-                Tell us what you want to achieve online. We&apos;ll share a tailored action plan for your website,
-                marketing, or complete digital transformation project.
+                Share your goals and we&apos;ll provide a redesign blueprint with timeline, scope, and practical next
+                steps tailored for your business.
               </p>
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
@@ -266,7 +224,7 @@ export default function HomePage() {
                 <textarea
                   name="message"
                   rows={4}
-                  placeholder="Tell us about your project"
+                  placeholder="Tell us about your redesign requirement"
                   value={formData.message}
                   onChange={handleChange}
                 />
