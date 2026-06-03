@@ -1,12 +1,14 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 type ContactFormData = {
   name: string;
   email: string;
   message: string;
 };
+
+type Theme = "light" | "dark";
 
 const initialFormData: ContactFormData = {
   name: "",
@@ -68,6 +70,25 @@ const deliverySteps = [
 export default function HomePage() {
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [submitted, setSubmitted] = useState(false);
+  const [theme, setTheme] = useState<Theme>("light");
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("highest-technologies-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme: Theme =
+      savedTheme === "dark" || savedTheme === "light" ? savedTheme : prefersDark ? "dark" : "light";
+
+    setTheme(initialTheme);
+    document.documentElement.dataset.theme = initialTheme;
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "light" ? "dark" : "light";
+
+    setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
+    window.localStorage.setItem("highest-technologies-theme", nextTheme);
+  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
@@ -106,9 +127,22 @@ export default function HomePage() {
             <a href="#process">Process</a>
             <a href="#contact">Contact</a>
           </nav>
-          <a href="#contact" className="nav-cta">
-            Get Proposal
-          </a>
+          <div className="nav-actions">
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+            >
+              <span className="theme-toggle-icon" aria-hidden="true">
+                {theme === "light" ? "☀️" : "🌙"}
+              </span>
+              <span>{theme === "light" ? "Light" : "Dark"}</span>
+            </button>
+            <a href="#contact" className="nav-cta">
+              Get Proposal
+            </a>
+          </div>
         </div>
       </header>
 
